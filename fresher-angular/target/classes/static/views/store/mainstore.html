@@ -1,70 +1,43 @@
-<body ng-app="myApp">
-<div ng-controller="MainStoreController as storeCtrl">
-<form class="form-horizontal"  ng-submit="storeCtrl.addText(storeCtrl.product)">
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Name:</label>
-    <div class="col-sm-10">
-      <input type="Name" class="form-control" placeholder="Name" ng-model="storeCtrl.product.name"/>
+<!-- <form class="store-form form-horizontal" ng-submit="submitForm()"> -->
+	<div class="container" style="margin-bottom: 50px">
+        <h2>Add new product</h2>
+        <form ng-submit="submitForm()" method="POST">
+        	<div class="form-group" style="display:none">
+                <label>Id:</label>
+                <input type="hidden" class="form-control" ng-model="product.id">
+            </div>
+        	<div class="form-group">
+                <label>Name:</label>
+                <input type="text" class="form-control" ng-model="product.name" required>
+            </div>
+            <div class="form-group">
+                <label>Model:</label>
+                <input type="text" class="form-control" ng-model="product.model" required>
+            </div>
+            <div class="form-group">
+                <label>Year:</label>
+                <input type="number" class="form-control" ng-model="product.year" required>
+            </div>
+            <div class="form-group">
+                <label>Price:</label>
+                <input type="number" class="form-control" ng-model="product.price" required>
+            </div>
+            <div class="form-group">
+                <label>Producer:</label>
+                <input type="text" class="form-control" ng-model="product.producer" required>
+            </div>
+            <div class="form-group">
+                <label>Available:</label>
+                <input type="number" class="form-control" ng-model="product.available" required>
+            </div>
+            
+            <input type="submit" class="btn btn-default" name="add" value="Add Product"/>
+            <input type="button" class="btn btn-default" name="search" value="Search All" ng-click="getAllProducts()"/>
+        </form>
     </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Model:</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="Model" ng-model="storeCtrl.product.model"/>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Year:</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" placeholder="Year" ng-model="storeCtrl.product.year"/>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Price:</label>
-    <div class="col-sm-10">
-      <input type="number" class="form-control" placeholder="Price" ng-model="storeCtrl.product.price"/>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Producer:</label>
-    <div class="col-sm-10">
-      <input type="number" class="form-control" placeholder="Producer" ng-model="storeCtrl.product.producer"/>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Available:</label>
-    <div class="col-sm-10">
-      <input type="number" class="form-control" placeholder="Available" ng-model="storeCtrl.product.available"/>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Add</button>
-      <button type="button" class="btn btn-default">Search All</button>
-    </div>
-  </div>
-</form>
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Model</th>
-    <th>Year</th>
-    <th>Price</th>
-    <th>Producer</th>
-    <th>Available</th>
-    <th>Action</th>
-  </tr>
-  <tr ng-repeat="prod in product">
-    <td>{{prod.name | uppercase}}</td>
-    <td>{{prod.model | uppercase}}</td>
-    <td>{{prod.year | uppercase}}</td>
-    <td>{{prod.price * prod.available}}</td>
-    <td>{{prod.producer | uppercase}}</td>
-    <td>{{prod.available}}</td>
-    <td><button type="button" class="btn btn-success" ng-click="increaseItemCount(prod)"><span class="glyphicon glyphicon-plus">+</span></button>
-      <button type="button" class="btn btn-warning" ng-click="decreaseItemCount(prod)"><span class="glyphicon glyphicon-minus">-</span></button>
-      <button type="button" class="btn btn-danger" ng-click="remove(prod)"><span class="glyphicon glyphicon-trash">Delete</span></button></td>
-  </tr>
-</table>
+    
+<!-- </form> -->
+<div ng-show="showProductList">
+    <search-products></search-products>
 </div>
-</body>
+</div>

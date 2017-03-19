@@ -1,1 +1,41 @@
-<button>Back to main store</button>
+<body ng-app="myApp">
+<div ng-controller="ProductDetailController">
+<div class="container-fluid">
+  <h2>Product Detail</h2>
+  <table class="table">
+    <tr>
+      <td>Name:</td>
+      <td>{{product.name}}</td>
+    </tr>
+    <tr>
+      <td>Model:</td>
+      <td>{{product.model}}</td>
+    </tr>
+    <tr>
+      <td>Year:</td>
+      <td>{{product.year}}</td>
+    </tr>
+    <tr>
+      <td>Price:</td>
+      <td>{{product.price | currency:"$"}}</td>
+    </tr>
+    <tr>
+      <td>Producer:</td>
+      <td>{{product.producer}}</td>
+    </tr>
+    <tr>
+      <td>Avaiable:</td>
+      <td>{{product.avaiable}}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button class="btn btn-primary btn-back">
+          <a href="#/mainstore">Back to Main Store</a>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</body>
